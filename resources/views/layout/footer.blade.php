@@ -1,7 +1,7 @@
 </main>
 <footer>
     <!--? Footer Start-->
-    <div class="footer-area section-bg" data-background="{{asset('assets/img/gallery/footer_bg.jpg')}}">
+    <div class="footer-area section-bg" data-background="{{ asset('assets/img/gallery/footer_bg.jpg') }}">
         <div class="container">
             <div class="footer-top footer-padding">
                 <div class="row d-flex justify-content-between">
@@ -9,7 +9,8 @@
                         <div class="single-footer-caption mb-50">
                             <!-- logo -->
                             <div class="footer-logo">
-                                <a href="index.html"><img src="{{asset('assets/img/logo/logo2_footer.png')}}" alt=""></a>
+                                <a href="index.html"><img src="{{ asset('assets/img/logo/logo2_footer.png') }}"
+                                        alt=""></a>
                             </div>
                         </div>
                     </div>
@@ -128,6 +129,43 @@
 <!-- Jquery Plugins, main Jquery -->
 <script src="{{ asset('assets/js/plugins.js') }}"></script>
 <script src="{{ asset('assets/js/main.js') }}"></script>
+
+<script>
+    function initMap() {
+        var uluru = {
+            lat: -25.363,
+            lng: 131.044
+        };
+        var grayStyles = [{
+                featureType: "all",
+                stylers: [{
+                        saturation: -90
+                    },
+                    {
+                        lightness: 50
+                    }
+                ]
+            },
+            {
+                elementType: 'labels.text.fill',
+                stylers: [{
+                    color: '#ccdee9'
+                }]
+            }
+        ];
+        var map = new google.maps.Map(document.getElementById('map'), {
+            center: {
+                lat: -31.197,
+                lng: 150.744
+            },
+            zoom: 9,
+            styles: grayStyles,
+            scrollwheel: false
+        });
+    }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDpfS1oRGreGSBU5HHjMmQ3o5NLw7VdJ6I&amp;callback=initMap">
+</script>
 
 
 </body>
