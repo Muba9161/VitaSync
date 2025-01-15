@@ -92,7 +92,7 @@
                                         policy</a></span>
                             </label>
                             <div class="container-login100-form-btn">
-                                <a href="index.html" class="login100-form-btn btn-primary">
+                                <a href="{{url('/dashboard')}}" class="login100-form-btn btn-primary {{Request::is('dashboard')?'active':''}}">
                                     Register
                                 </a>
                             </div>

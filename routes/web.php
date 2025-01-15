@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\admin\AuthController;
+use App\Http\Controllers\admin\DashboardController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -30,5 +31,9 @@ Route::get('/login',function(){
 Route::get('/register',function(){
     return view('admin.auth.register');
 });
+Route::get('/dashboard',function(){
+    return view('admin.dashboard');
+});
+
 
 Route::post('/login', [AuthController::class, 'login'])->name('submit.login');
