@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\admin\AuthController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -21,3 +22,13 @@ Route::get('/department',function(){
 Route::get('/contact',function(){
     return view('contact');
 });
+
+Route::get('/login',function(){
+    return view('admin.auth.login');
+});
+
+Route::get('/register',function(){
+    return view('admin.auth.register');
+});
+
+Route::post('/login', [AuthController::class, 'login'])->name('submit.login');

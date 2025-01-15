@@ -48,7 +48,7 @@
                     <div class="row align-items-center">
                         <!-- Logo -->
                         <div class="col-xl-2 col-lg-2 col-md-1">
-                            <div class="logo">
+                            <div class="logo" style="margin-left: -15px">
                                 <a href="index.html"><img src="{{ asset('assets/img/logo/logo.png') }}"
                                         alt=""></a>
                             </div>
@@ -77,8 +77,8 @@
                                     </nav>
                                 </div>
                                 <div class="header-right-btn f-right d-none d-lg-block ml-30">
-                                    <a href="#" class="btn header-btn">Login</a>
-                                    <a href="#" class="btn header-btn">Register</a>
+                                    <a href="{{url('login')}}" class="btn header-btn {{Request::is('login') ? 'active' : ''}}">Login</a>
+                                    {{-- <a href="#" class="btn header-btn">Register</a> --}}
                                 </div>
                             </div>
                         </div>
