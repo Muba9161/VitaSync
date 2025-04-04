@@ -361,7 +361,7 @@
                             </div>
                             <div class="col-xl-6 col-md-6">
                                 <div class="business_thumb">
-                                    <img src="{{asset('assets/img/about/business.png')}}" alt="">
+                                    <img src="{{ asset('assets/img/about/business.png') }}" alt="">
                                 </div>
                             </div>
                         </div>
@@ -382,7 +382,7 @@
                             </div>
                             <div class="col-xl-6 col-md-6">
                                 <div class="business_thumb">
-                                    <img src="{{asset('assets/img/about/business.png')}}" alt="">
+                                    <img src="{{ asset('assets/img/about/business.png') }}" alt="">
                                 </div>
                             </div>
                         </div>
@@ -407,60 +407,33 @@
             <div class="row">
                 <div class="col-xl-12">
                     <div class="expert_active owl-carousel">
-                        <div class="single_expert">
-                            <div class="expert_thumb">
-                                <img src="{{ asset('assets/img/experts/1.png') }}" alt="">
+                        @foreach ($doctors as $doctor)
+                            <div class="single_expert">
+                                <div class="expert_thumb">
+                                    @if (!is_null($doctor->profile_picture))
+                                        <img src="{{ asset('storage/profile_pictures/' . $doctor->profile_picture) }}"
+                                            alt="">
+                                    @else
+                                        <img src="{{ asset('assets/img/experts/1.png') }}" alt="">
+                                    @endif
+                                </div>
+                                <div class="experts_name text-center">
+                                    <h3>{{ $doctor->name }}</h3>
+                                    @if (!is_null($doctor->twitter_link))
+                                        <span>{{ $doctor->twitter_link }}</span> <br>
+                                    @else
+                                        <span> Jhola-Chaap Doctor Saala </span> <br>
+                                    @endif
+                                    @if ($doctor->fees == '0.00')
+                                        <span>Fees: Free</span> <br>
+                                    @else
+                                        <span>Fees: ₹{{ $doctor->fees }}</span> <br>
+                                    @endif
+                                    <a href="#" class="boxed-btn3 px-6 py-2 my-3">Book For Night</a>
+                                </div>
+
                             </div>
-                            <div class="experts_name text-center">
-                                <h3>Mirazul Alom</h3>
-                                <span>Neurologist</span>
-                            </div>
-                        </div>
-                        <div class="single_expert">
-                            <div class="expert_thumb">
-                                <img src="{{ asset('assets/img/experts/2.png') }}" alt="">
-                            </div>
-                            <div class="experts_name text-center">
-                                <h3>Mirazul Alom</h3>
-                                <span>Neurologist</span>
-                            </div>
-                        </div>
-                        <div class="single_expert">
-                            <div class="expert_thumb">
-                                <img src="{{ asset('assets/img/experts/3.png') }}" alt="">
-                            </div>
-                            <div class="experts_name text-center">
-                                <h3>Mirazul Alom</h3>
-                                <span>Neurologist</span>
-                            </div>
-                        </div>
-                        <div class="single_expert">
-                            <div class="expert_thumb">
-                                <img src="{{ asset('assets/img/experts/4.png') }}" alt="">
-                            </div>
-                            <div class="experts_name text-center">
-                                <h3>Mirazul Alom</h3>
-                                <span>Neurologist</span>
-                            </div>
-                        </div>
-                        <div class="single_expert">
-                            <div class="expert_thumb">
-                                <img src="{{asset('assets/img/experts/1.png')}}" alt="">
-                            </div>
-                            <div class="experts_name text-center">
-                                <h3>Mirazul Alom</h3>
-                                <span>Neurologist</span>
-                            </div>
-                        </div>
-                        <div class="single_expert">
-                            <div class="expert_thumb">
-                                <img src="{{asset('assets/img/experts/2.png')}}" alt="">
-                            </div>
-                            <div class="experts_name text-center">
-                                <h3>Mirazul Alom</h3>
-                                <span>Neurologist</span>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>

@@ -98,7 +98,7 @@
                             {{-- Select whether entity or individual --}}
                             <div class="wrap-input100 validate-input input-group mt-4" id="selection-toggle">
                                 <label class="input-group-text bg-white text-muted">Who you are?</label>
-                                <select name="option" class="form-control" required>
+                                <select name="role" class="form-control" required>
                                     <option value="doctor">Doctor</option>
                                     <option value="patient">Patient</option>
                                 </select>

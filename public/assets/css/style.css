@@ -2955,6 +2955,8 @@ h3 {
   -ms-transform: scale(1);
   transform: scale(1);
   width: 100%;
+  height: 250px;
+  object-fit: cover;
 }
 
 /* line 32, C:/Users/SPN Graphics/Desktop/CL September/210 Medical/HTML/scss/_experts.scss */

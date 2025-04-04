@@ -3,45 +3,58 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Auth\LoginRequest;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\View\View;
+use Illuminate\Validation\ValidationException;
 
 class AuthenticatedSessionController extends Controller
 {
-    /**
-     * Display the login view.
-     */
-    public function create(): View
+    public function create()
     {
+        Auth::logout();
         return view('auth.login');
     }
 
-    /**
-     * Handle an incoming authentication request.
-     */
-    public function store(LoginRequest $request): RedirectResponse
+    public function store(Request $request)
     {
-        $request->authenticate();
+        // Ensure the user is logged out before logging in again
+        Auth::logout();
 
-        $request->session()->regenerate();
+        // Validate email and password
+        $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required', 'string'],
+        ]);
 
-        return redirect()->intended(route('dashboard', absolute: false));
+        // Attempt to log the user in
+        if (Auth::attempt($request->only('email', 'password'), $request->boolean('remember'))) {
+            // Regenerate the session ID to prevent session fixation
+            $request->session()->regenerate();
+
+            session()->flash('status', 'success');
+
+            // Redirect to dashboard or desired location
+            return redirect()->route('dashboard');
+        }
+
+        // If login fails, throw a validation exception
+        throw ValidationException::withMessages([
+            'email' => 'The provided credentials do not match our records.',
+        ]);
     }
 
-    /**
-     * Destroy an authenticated session.
-     */
-    public function destroy(Request $request): RedirectResponse
+
+
+    public function destroy(Request $request)
     {
-        Auth::guard('web')->logout();
+        // Log the user out
+        Auth::logout();
 
+        // Invalidate the session and regenerate the CSRF token
         $request->session()->invalidate();
-
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        // Redirect the user to the login page or home page
+        return redirect()->route('login'); // Or redirect to a page you prefer
     }
 }
