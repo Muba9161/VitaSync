@@ -56,107 +56,117 @@
                     </div>
                 </div>
                 <div class="container-login100">
-                    <div class="wrap-login100 p-6">
-                        <form method="POST" action="{{ route('register') }}" class="login100-form validate-form">
-                            @csrf
-                            <span class="login100-form-title">
-                                Registration
-                            </span>
-                            <!-- Name -->
-                            <div class="wrap-input100 validate-input input-group">
-                                <a href="javascript:void(0)" class="input-group-text bg-white text-muted">
-                                    <i class="mdi mdi-account" aria-hidden="true"></i>
-                                </a>
-                                <input id="name" class="input100 border-start-0 ms-0 form-control" type="text"
-                                    name="name" value="{{ old('name') }}" placeholder="User Name" required
-                                    autofocus autocomplete="name" />
-                            </div>
-                            <x-input-error :messages="$errors->get('name')" class="mt-2" />
+                    <!--Row open-->
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header border-bottom-0">
+                                    <h3 class="card-title">Welcome!</h3>
+                                </div>
+                                <div class="card-body">
+                                    <div id="smartwizard-3">
+                                        <ul>
+                                            <li><a href="#step-10">Getting Started</a></li>
+                                            <li><a href="#step-11">Register</a></li>
+                                            {{-- <li><a href="#step-12">End</a></li> --}}
+                                        </ul>
+                                        <div>
+                                            <div id="step-10" class="">
+                                                <h2>Getting Started</h2>
+                                                <p style="text-align: justify;">Lorem ipsum, dolor sit amet consectetur
+                                                    <br> adipisicing elit. Saepe asperiores hic est ratione, <br> ut
+                                                    aliquam nihil dolorum consectetur quis aut nulla <br> eligendi
+                                                    voluptates sequi, distinctio id officia eos obcaecati <br> omnis
+                                                    soluta rem. Dolor perferendis delectus ullam consectetur <br> autem
+                                                    molestias laborum vitae maiores commodi. Autem sunt quas <br>
+                                                    sapiente. Doloribus, quis eum!
+                                                </p>
 
-                            <!-- Email Address -->
-                            <div class="wrap-input100 validate-input input-group mt-4">
-                                <a href="javascript:void(0)" class="input-group-text bg-white text-muted">
-                                    <i class="zmdi zmdi-email" aria-hidden="true"></i>
-                                </a>
-                                <input id="email" class="input100 border-start-0 ms-0 form-control" type="email"
-                                    name="email" value="{{ old('email') }}" placeholder="Email" required
-                                    autocomplete="username" />
-                            </div>
-                            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                                                <p>Already Have an Account? <a href="{{ route('login') }}">Sign In</a>
+                                                </p>
+                                            </div>
+                                            <div id="step-11" class="">
+                                                <form method="POST" action="{{ route('register') }}"
+                                                    class="login100-form validate-form">
+                                                    @csrf
+                                                                                                        <!-- Name -->
+                                                    <div class="wrap-input100 validate-input input-group">
+                                                        <a href="javascript:void(0)"
+                                                            class="input-group-text bg-white text-muted">
+                                                            <i class="mdi mdi-account" aria-hidden="true"></i>
+                                                        </a>
+                                                        <input id="name"
+                                                            class="input100 border-start-0 ms-0 form-control"
+                                                            type="text" name="name" value="{{ old('name') }}"
+                                                            placeholder="User Name" required autofocus
+                                                            autocomplete="name" />
+                                                    </div>
+                                                    <x-input-error :messages="$errors->get('name')" class="mt-2" />
 
-                            <!-- Password -->
-                            <div class="wrap-input100 validate-input input-group mt-4" id="Password-toggle">
-                                <a href="javascript:void(0)" class="input-group-text bg-white text-muted">
-                                    <i class="zmdi zmdi-eye" aria-hidden="true"></i>
-                                </a>
-                                <input id="password" class="input100 border-start-0 ms-0 form-control" type="password"
-                                    name="password" placeholder="Password" required autocomplete="new-password" />
-                            </div>
-                            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                                                    <!-- Email Address -->
+                                                    <div class="wrap-input100 validate-input input-group mt-4">
+                                                        <a href="javascript:void(0)"
+                                                            class="input-group-text bg-white text-muted">
+                                                            <i class="zmdi zmdi-email" aria-hidden="true"></i>
+                                                        </a>
+                                                        <input id="email"
+                                                            class="input100 border-start-0 ms-0 form-control"
+                                                            type="email" name="email" value="{{ old('email') }}"
+                                                            placeholder="Email" required autocomplete="username" />
+                                                    </div>
+                                                    <x-input-error :messages="$errors->get('email')" class="mt-2" />
 
-
-                            {{-- Select whether entity or individual --}}
-                            <div class="wrap-input100 validate-input input-group mt-4" id="selection-toggle">
-                                <label class="input-group-text bg-white text-muted">Who you are?</label>
-                                <select name="role" class="form-control" required>
-                                    <option value="doctor">Doctor</option>
-                                    <option value="patient">Patient</option>
-                                </select>
-                            </div>
-                            <x-input-error :messages="$errors->get('option')" class="mt-2" />
-
-
-                            <!-- Terms & Conditions -->
-                            <label class="custom-control custom-checkbox mt-4">
-                                <input type="checkbox" class="custom-control-input" required>
-                                <span class="custom-control-label">Agree to the <a href="terms.html">terms and
-                                        policy</a></span>
-                            </label>
-
-                            <!-- Submit Button -->
-                            <div class="container-login100-form-btn mt-4">
-                                <button type="submit" class="login100-form-btn btn-primary">
-                                    Register
-                                </button>
-                            </div>
-
-                            <!-- Already have an account -->
-                            <div class="text-center pt-3">
-                                <p class="text-dark mb-0">Already have an account?<a href="{{ route('login') }}"
-                                        class="text-primary ms-1">Sign In</a></p>
-                            </div>
+                                                    <!-- Password -->
+                                                    <div class="wrap-input100 validate-input input-group mt-4"
+                                                        id="Password-toggle">
+                                                        <a href="javascript:void(0)"
+                                                            class="input-group-text bg-white text-muted">
+                                                            <i class="zmdi zmdi-eye" aria-hidden="true"></i>
+                                                        </a>
+                                                        <input id="password"
+                                                            class="input100 border-start-0 ms-0 form-control"
+                                                            type="password" name="password" placeholder="Password"
+                                                            required autocomplete="new-password" />
+                                                    </div>
+                                                    <x-input-error :messages="$errors->get('password')" class="mt-2" />
 
 
-                            <!-- Social Login -->
-                            {{-- <label class="login-social-icon"><span>Register with Social</span></label>
-                            <div class="d-flex justify-content-center">
-                                <a href="javascript:void(0)">
-                                    <div class="social-login me-4 text-center">
-                                        <i class="fa fa-google"></i>
+                                                    {{-- Select whether entity or individual --}}
+                                                    <div class="wrap-input100 validate-input input-group mt-4"
+                                                        id="selection-toggle">
+                                                        <label class="input-group-text bg-white text-muted">Who you
+                                                            are?</label>
+                                                        <select name="role" class="form-control" required>
+                                                            <option value="doctor">Doctor</option>
+                                                            <option value="patient">Patient</option>
+                                                        </select>
+                                                    </div>
+                                                    <x-input-error :messages="$errors->get('option')" class="mt-2" />
+
+                                                    <!-- Submit Button -->
+                                                    <div class="container-login100-form-btn mt-4">
+                                                        <button type="submit" class="login100-form-btn btn-primary">
+                                                            Register
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
                                     </div>
-                                </a>
-                                <a href="javascript:void(0)">
-                                    <div class="social-login me-4 text-center">
-                                        <i class="fa fa-facebook"></i>
-                                    </div>
-                                </a>
-                                <a href="javascript:void(0)">
-                                    <div class="social-login text-center">
-                                        <i class="fa fa-twitter"></i>
-                                    </div>
-                                </a>
-                            </div> --}}
-                        </form>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <!-- CONTAINER CLOSED -->
+                <!--row closed-->
             </div>
+            <!-- CONTAINER CLOSED -->
         </div>
-        <!-- END PAGE -->
+    </div>
+    <!-- END PAGE -->
 
     </div>
     <!-- BACKGROUND-IMAGE CLOSED -->
-
     <!-- JQUERY JS -->
     <script src="../admin/js/jquery.min.js"></script>
 
@@ -164,14 +174,49 @@
     <script src="../admin/plugins/bootstrap/js/popper.min.js"></script>
     <script src="../admin/plugins/bootstrap/js/bootstrap.min.js"></script>
 
-    <!-- SHOW PASSWORD JS -->
-    <script src="../admin/js/show-password.min.js"></script>
+    <!-- SIDE-MENU JS-->
+    <script src="../admin/plugins/sidemenu/sidemenu.js"></script>
+
+    <!-- TypeHead js -->
+    <script src="../admin/plugins/bootstrap5-typehead/autocomplete.js"></script>
+    <script src="../admin/js/typehead.js"></script>
+
+    <!-- SIDEBAR JS -->
+    <script src="../admin/plugins/sidebar/sidebar.js"></script>
+
+    <!-- FORM WIZARD JS-->
+    <script src="../admin/plugins/formwizard/jquery.smartWizard.js"></script>
+    <script src="../admin/plugins/formwizard/fromwizard.js"></script>
+
+    <!-- INTERNAl Jquery.steps js -->
+    <script src="../admin/plugins/jquery-steps/jquery.steps.min.js"></script>
+    <script src="../admin/plugins/parsleyjs/parsley.min.js"></script>
 
     <!-- Perfect SCROLLBAR JS-->
     <script src="../admin/plugins/p-scroll/perfect-scrollbar.js"></script>
+    <script src="../admin/plugins/p-scroll/pscroll.js"></script>
+    <script src="../admin/plugins/p-scroll/pscroll-1.js"></script>
+
+    <!-- INTERNAL Accordion-Wizard-Form js-->
+    <script src="../admin/plugins/accordion-Wizard-Form/jquery.accordion-wizard.min.js"></script>
+    <script src="../admin/js/form-wizard.js"></script>
+
+    <!-- FILE UPLOADES JS -->
+    <script src="../admin/plugins/fileuploads/js/fileupload.js"></script>
+    <script src="../admin/plugins/fileuploads/js/file-upload.js"></script>
+
+    <!-- INTERNAL File-Uploads Js-->
+    <script src="../admin/plugins/fancyuploder/jquery.ui.widget.js"></script>
+    <script src="../admin/plugins/fancyuploder/jquery.fileupload.js"></script>
+    <script src="../admin/plugins/fancyuploder/jquery.iframe-transport.js"></script>
+    <script src="../admin/plugins/fancyuploder/jquery.fancy-fileupload.js"></script>
+    <script src="../admin/plugins/fancyuploder/fancy-uploader.js"></script>
 
     <!-- Color Theme js -->
     <script src="../admin/js/themeColors.js"></script>
+
+    <!-- Sticky js -->
+    <script src="../admin/js/sticky.js"></script>
 
     <!-- CUSTOM JS -->
     <script src="../admin/js/custom.js"></script>

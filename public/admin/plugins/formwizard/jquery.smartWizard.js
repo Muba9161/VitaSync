@@ -167,12 +167,12 @@
             // Add extra toolbar buttons
             var btnGroupExtra = null;
 
-            if (this.options.toolbarSettings.toolbarExtraButtons && this.options.toolbarSettings.toolbarExtraButtons.length > 0) {
-                btnGroupExtra = $('<div></div>').addClass('btn-group me-2 sw-btn-group-extra').attr('role', 'group');
-                $.each(this.options.toolbarSettings.toolbarExtraButtons, function (i, n) {
-                    btnGroupExtra.append(n.clone(true));
-                });
-            }
+            // if (this.options.toolbarSettings.toolbarExtraButtons && this.options.toolbarSettings.toolbarExtraButtons.length > 0) {
+            //     btnGroupExtra = $('<div></div>').addClass('btn-group me-2 sw-btn-group-extra').attr('role', 'group');
+            //     $.each(this.options.toolbarSettings.toolbarExtraButtons, function (i, n) {
+            //         btnGroupExtra.append(n.clone(true));
+            //     });
+            // }
 
             var toolbarTop, toolbarBottom;
             // Append toolbar based on the position

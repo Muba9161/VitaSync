@@ -28,6 +28,9 @@
     <link href="{{ asset('../admin/css/dark-style.css') }}" rel="stylesheet" />
     <link href="{{ asset('../admin/css/transparent-style.css') }}" rel="stylesheet">
     <link href="{{ asset('../admin/css/skin-modes.css') }}" rel="stylesheet" />
+    <!-- Font Awesome 6 CDN -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
 
     <!--- FONT-ICONS CSS -->
     <link href="{{ asset('../admin/css/icons.css') }}" rel="stylesheet" />
@@ -96,13 +99,13 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="d-flex country">
+                                        {{-- <div class="d-flex country">
                                             <a class="nav-link icon text-center" data-bs-target="#country-selector"
                                                 data-bs-toggle="modal">
                                                 <i class="fe fe-globe"></i><span
                                                     class="fs-16 ms-2 d-none d-xl-block">English</span>
                                             </a>
-                                        </div>
+                                        </div> --}}
                                         <!-- COUNTRY -->
                                         <div class="d-flex country">
                                             <a class="nav-link icon theme-layout nav-link-bg layout-setting">
@@ -112,10 +115,10 @@
                                         </div>
                                         <!-- Theme-Layout -->
                                         <div class="dropdown d-flex shopping-cart">
-                                            <a class="nav-link icon text-center" data-bs-toggle="dropdown">
+                                            {{-- <a class="nav-link icon text-center" data-bs-toggle="dropdown">
                                                 <i class="fe fe-shopping-cart"></i><span
                                                     class="badge bg-secondary header-badge">4</span>
-                                            </a>
+                                            </a> --}}
                                             <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
                                                 <div class="drop-heading border-bottom">
                                                     <div class="d-flex">
@@ -442,7 +445,7 @@
                                         <div class="dropdown d-flex profile-1">
                                             <a href="javascript:void(0)" data-bs-toggle="dropdown"
                                                 class="nav-link leading-none d-flex">
-                                                <img src="../admin/images/users/21.jpg" alt="profile-user"
+                                                <img src="{{ asset('storage/profile_pictures/' . Auth::user()->profile_picture) }}" alt="profile-user"
                                                     class="avatar profile-user brround cover-image" />
                                             </a>
                                             <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
@@ -451,8 +454,8 @@
                                                         <h5 class="text-dark mb-0 fs-14 fw-semibold">
                                                             {{ Auth::user()->name }}
                                                         </h5>
-                                                        <small
-                                                            class="text-muted text-capitalize">{{ Auth::user()->role }}</small>
+
+                                                        <small class="text-muted text-capitalize">{{ Auth::user()->role }}</small>
                                                     </div>
                                                 </div>
                                                 <div class="dropdown-divider m-0"></div>
@@ -509,17 +512,39 @@
                             <li class="sub-category">
                                 <h3>Main</h3>
                             </li>
-                            <li class="slide">
+                            {{-- <li class="slide">
                                 <a class="side-menu__item has-link" data-bs-toggle="slide"
-                                    href="{{ route('dashboard') }}"><i class="side-menu__icon fe fe-home"></i><span
+                                    href="{{ route('dashboard') }}"><i class="side-menu__icon fas fa-home"></i><span
                                         class="side-menu__label">Dashboard</span></a>
-                            </li>
-                            
-                            <li class="slide">
-                                <a class="side-menu__item has-link" data-bs-toggle="slide"
-                                    href="#"><i class="side-menu__icon fe fe-users"></i><span
-                                        class="side-menu__label">My Patients</span></a>
-                            </li>
+                            </li> --}}
+
+                            @if (Auth::user()->role == 'doctor')
+                                <li class="slide">
+                                    <a class="side-menu__item has-link" data-bs-toggle="slide" href="{{route('appoint.index')}}"><i
+                                            class="side-menu__icon fas fa-heartbeat "></i><span class="side-menu__label">My
+                                            Patients</span></a>
+                                </li>
+                                <li class="slide">
+                                    <a class="side-menu__item has-link" data-bs-toggle="slide" href="#y"><i
+                                            class="side-menu__icon fas fa-clipboard "></i><span class="side-menu__label">Prescription Pad</span></a>
+                                </li>
+                                <li class="slide">
+                                    <a class="side-menu__item has-link" data-bs-toggle="slide" href="#"><i
+                                            class="side-menu__icon fas fa-medal "></i><span class="side-menu__label">My Certificates</span></a>
+                                </li>
+                            @else
+                                <li class="slide">
+                                    <a class="side-menu__item has-link" data-bs-toggle="slide" href="{{route('appoint.index')}}"><i
+                                            class="side-menu__icon fas fa-stethoscope "></i><span
+                                            class="side-menu__label">My
+                                            Appointments</span></a>
+                                </li>
+                                <li class="slide">
+                                    <a class="side-menu__item has-link" data-bs-toggle="slide" href="#"><i
+                                            class="side-menu__icon fas fa-file-invoice"></i><span class="side-menu__label">  My Prescription</span></a>
+                                </li>
+                            @endif
+
                         </ul>
                         <div class="slide-right" id="slide-right">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="#7b8191" width="24" height="24"

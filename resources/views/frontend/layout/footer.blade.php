@@ -7,13 +7,9 @@
                     <div class="footer_widget">
                         <div class="footer_logo">
                             <a href="#">
-                                <img src="{{asset('frontend/img/footer_logo.png')}}" alt="">
+                                <img src="{{asset('assets/img/footer_logo.png')}}" alt="">
                             </a>
                         </div>
-                        <p>
-                            Firmament morning sixth subdue darkness
-                            creeping gathered divide.
-                        </p>
                         <div class="socail_links">
                             <ul>
                                 <li>
@@ -71,9 +67,9 @@
                             Address
                         </h3>
                         <p>
-                            200, D-block, Green lane USA <br>
-                            +10 367 467 8934 <br>
-                            docmed@contact.com
+                            Somewhere, India <br>
+                            +91 1236969 <br>
+                            info@examplehospital.com
                         </p>
                     </div>
                 </div>

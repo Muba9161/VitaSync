@@ -34,7 +34,7 @@ class AuthenticatedSessionController extends Controller
             session()->flash('status', 'success');
 
             // Redirect to dashboard or desired location
-            return redirect()->route('dashboard');
+            return redirect()->route('frontend.index');
         }
 
         // If login fails, throw a validation exception

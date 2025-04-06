@@ -25,4 +25,8 @@ class BasicController extends Controller
 
         return view('layouts.header', compact('users'));
     }
+
+    function dashboard(){
+        return view('dashboard');
+    }
 }
